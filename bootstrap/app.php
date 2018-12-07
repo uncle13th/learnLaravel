@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| Create The Application
+| Create The Application 初始化服务容器
 |--------------------------------------------------------------------------
 |
 | The first thing we will do is create a new Laravel application instance

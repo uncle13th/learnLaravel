@@ -1,0 +1,38 @@
+源码分析参考：https://leoyang90.gitbooks.io/laravel-source-analysis/content/
+
+一、涉及的知识点
+1、autoload自动加载
+参考：
+https://blog.csdn.net/hguisu/article/details/7463333 【PHP的类自动加载机制】
+https://www.jb51.net/article/31279.htm 【PHP的autoload机制的实现解析】
+http://php.net/manual/zh/ref.spl.php 【spl函数说明】
+
+1）spl_autoload_register 函数
+注册用户自定义的自动加载函数
+
+2）spl_autoload_functions 函数
+返回所有已注册的自动加载函数
+
+3）spl_autoload 函数
+__autoload()函数的默认实现。如果不使用任何参数调用 spl_autoload_register() 函数，则以后在进行 __autoload() 调用时会自动使用此函数。
+
+4）spl_autoload_call 函数
+这个函数会尝试调用所有已注册的自动加载函数，一旦某个自动加载函数调用完毕后，且类实例化，那么就不再往下去调用剩余的自动加载函数
+
+5）spl_autoload_extensions 函数
+注册并返回spl_autoload函数使用的默认文件扩展名。不传参数，则是返回当前的文件扩展名列表，默认是".ini,.php"，带参数，则是修改文件扩展名
+
+6）spl_autoload_unregister 函数
+注销已注册的__autoload()函数
+
+7）小结：
+使用自动加载，可以避免require_once等带来的开销以及麻烦，比如各种类文件之间嵌套、调用，都必须require。如果使用autoload，还可以实现懒加载
+spl_autoload_register用于注册自动加载函数，不加参数则默认是使用apl_autoload函数作为自动加载函数。当类实例化的时候，如果因为有autoload，
+那么会从已注册的自动加载函数中按照顺序去寻找需要的类文件，如果找到了并且实例化成功，则不再往下执行剩余的自动加载函数。
+
+
+2、closure 闭包
+
+
+
+
